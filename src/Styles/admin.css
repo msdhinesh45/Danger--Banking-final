@@ -1,0 +1,84 @@
+.admin-login-bg {
+    background-color: #1a1a1a;
+    height: 110vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.admin-login-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.admin-login-image {
+    max-width: 100%;
+    height: 50vh;
+    border-radius: 20px;
+}
+
+.admin-login-image:hover {
+    transform: scale(1.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+.form-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand img {
+    margin-right: 10px;
+}
+.back-btn{
+    font-size: 30px;
+}
+
+.danger-text {
+    font-size: 38px;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.danger-text:hover {
+    transform: scale(1.1);
+    color: #ff3333;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .danger-text {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .danger-text {
+        font-size: 28px;
+    }
+}

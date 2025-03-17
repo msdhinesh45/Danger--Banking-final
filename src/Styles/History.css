@@ -1,0 +1,87 @@
+/* Background and Overlay */
+.history-bg {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  padding-top: 80px; /* To account for the fixed navbar */
+}
+
+.history-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.table th {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Clear History Button */
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: #1a1a1a;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-warning:hover {
+  transform: scale(1.05);
+  background-color: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .history-container {
+      padding: 15px;
+  }
+
+  .table th,
+  .table td {
+      padding: 8px;
+      font-size: 14px;
+  }
+
+  .danger-text {
+      font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-container {
+      padding: 10px;
+  }
+
+  .table th,
+  .table td {
+      padding: 6px;
+      font-size: 12px;
+  }
+
+  .danger-text {
+      font-size: 28px;
+  }
+}

@@ -1,0 +1,194 @@
+/* Background and Overlay */
+.acchome-bg {
+    background-color: #1a1a1a;
+    height: 190vh;
+    margin-top: 50px;
+    /* padding-top: 100px; */
+    overflow: hidden;
+    position: relative;
+}
+
+.acchome-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+/* Navbar Brand */
+.navbar .navbar-brand img {
+    margin-right: 5px;
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+    color: red;
+}
+
+.acchome-danger-text {
+    font-size: 38px;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease-in-out;
+}
+
+.acchome-danger-text:hover {
+    transform: scale(1.1);
+    color: #ff3333;
+}
+
+/* Content */
+.acchome-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 150px auto;
+    
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.acchome-content h2 {
+    font-size: 32px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.acchome-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.acchome-content p strong {
+    color: #ffc107; /* Yellow for emphasis */
+}
+
+.acchome-content p em {
+    color: #17a2b8; /* Blue for emphasis */
+}
+
+/* Carousel */
+.carousel-inner img {
+    width: 100%;
+    height: 80vh;
+    object-fit: fill;
+    transition: transform 0.5s ease;
+}
+
+.carousel-inner img:hover {
+    transform: scale(1.05);
+}
+
+/* Quick Actions */
+.acchome-quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-acchome-deposit, .btn-acchome-withdraw, .btn-acchome-history {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-acchome-deposit {
+    background-color: #28a745; /* Green for Deposit */
+}
+
+.btn-acchome-withdraw {
+    background-color: #ffc107; /* Yellow for Withdraw */
+}
+
+.btn-acchome-history {
+    background-color: #17a2b8; /* Blue for History */
+}
+
+.btn-acchome-deposit:hover, .btn-acchome-withdraw:hover, .btn-acchome-history:hover {
+    transform: scale(1.1);
+}
+
+/* Emoji Reactions */
+.acchome-emoji-reactions {
+    margin-top: 30px;
+}
+
+.acchome-emoji-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.acchome-emoji-container span {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.acchome-emoji-container span:hover {
+    transform: scale(1.2);
+}
+
+/* LogOut Button */
+.btn-acchome-logout {
+    background-color: #dc3545; /* Red for LogOut */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-acchome-logout:hover {
+    transform: scale(1.1);
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .acchome-content {
+        margin: 100px auto;
+        padding: 15px;
+    }
+
+    .acchome-content h2 {
+        font-size: 28px;
+    }
+
+    .acchome-content p {
+        font-size: 16px;
+    }
+
+    .acchome-quick-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .acchome-content {
+        margin: 80px auto;
+        padding: 10px;
+    }
+
+    .acchome-content h2 {
+        font-size: 24px;
+    }
+
+    .acchome-content p {
+        font-size: 14px;
+    }
+
+    .acchome-emoji-container {
+        font-size: 20px;
+    }
+}

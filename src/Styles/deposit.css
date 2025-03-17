@@ -1,0 +1,73 @@
+.signin-bg {
+    background-color: #1a1a1a;
+    height: 110vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.login-image {
+    max-width: 100%;
+    height: 50vh;
+    border-radius: 20px;
+}
+.login-image:hover{
+    transform: scale(1.15);
+}
+
+.form-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    width: 50vw;
+    border-radius: 10px;
+}
+
+.error-message {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+}
+
+
+
+.danger-text {
+    font-size: 38px; /* Adjust size */
+    font-weight: bold; /* Make it bold */
+    color: red; /* Set red color to indicate danger */
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7); /* Add a glowing effect */
+    font-family: 'Arial', sans-serif; /* Customize font */
+    transition: transform 0.3s ease-in-out; /* Add hover effect */
+}
+
+.danger-text:hover {
+    transform: scale(1.1); /* Slightly enlarge text on hover */
+    color: #ff3333; /* Change color when hovered */
+}
+.btn-danger{
+    color: white;
+}
+.btn-danger:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .danger-text {
+        font-size: 36px; /* Adjust size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .danger-text {
+        font-size: 28px; /* Adjust size for even smaller screens */
+    }
+}

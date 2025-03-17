@@ -1,0 +1,145 @@
+.index-bg {
+    background-color: black; 
+    height: 100vh;
+    margin-top: 100px;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand img {
+    margin-right: 5px;
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+/* Image with hover animation */
+.content img {
+    margin-top: 100px;
+    width: 350px;
+    height: 350px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.content img:hover {
+    transform: scale(1.05);
+}
+
+.content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: red;
+    text-shadow: 2px 2px 4px rgba(170, 168, 168, 0.8);
+}
+
+/* Button with smooth transition effect */
+.content .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.content .btn:hover {
+    transform: scale(1.05);
+}
+
+.danger-text {
+    font-size: 34px; /* Adjust size */
+    font-weight: bold; /* Make it bold */
+    color: red; /* Set red color to indicate danger */
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7); /* Add a glowing effect */
+    font-family: 'Arial', sans-serif; /* Customize font */
+    transition: transform 0.3s ease-in-out; /* Add hover effect */
+}
+
+.danger-text:hover {
+    transform: scale(1.1); /* Slightly enlarge text on hover */
+    color: #ff3333; /* Change color when hovered */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 40px;
+    }
+
+    .content img {
+        margin-top: 50px;
+        width: 250px;
+        height: 250px;
+    }
+
+    .navbar .navbar-brand img {
+        height: 60px;
+        width: 60px;
+    }
+
+    .danger-text {
+        font-size: 24px;
+    }
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 576px) {
+    .content h1 {
+        font-size: 30px;
+    }
+
+    .content img {
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .navbar .navbar-brand img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .danger-text {
+        font-size: 20px;
+    }
+}
