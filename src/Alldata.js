@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import './Styles/alldata.css'; // Add styles for the AllData page
 import logo from './Images/bl.png';
 
@@ -6,11 +7,30 @@ const AllData = () => {
     // Retrieve all user data from localStorage
     const users = JSON.parse(localStorage.getItem("AccountDetails")) || [];
 
-    // Function to remove a user by index
+    // Function to remove a user by index with SweetAlert confirmation
     const removeUser = (index) => {
-        const updatedUsers = users.filter((user, i) => i !== index); // Filter out the user to be removed
-        localStorage.setItem("AccountDetails", JSON.stringify(updatedUsers)); // Update localStorage
-        window.location.reload(); // Refresh the page to reflect changes
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const updatedUsers = users.filter((user, i) => i !== index);
+                localStorage.setItem("AccountDetails", JSON.stringify(updatedUsers));
+                
+                Swal.fire(
+                    "Deleted!",
+                    "The user has been removed successfully.",
+                    "success"
+                ).then(() => {
+                    window.location.reload(); // Refresh the page to reflect changes
+                });
+            }
+        });
     };
 
     return (

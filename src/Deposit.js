@@ -4,13 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import logo from './Images/bl.png';
 import DepositPic from './Images/deposit.png';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const Deposit = () => {
   const navigate = useNavigate();
   const [accountNumber, setAccountNumber] = useState('');
   const [balance, setBalance] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
 
   // Fetch logged-in user details on component mount
   useEffect(() => {
@@ -35,10 +35,22 @@ const Deposit = () => {
       .typeError('Amount must be a number'),
   });
 
+  // Function to format date in 12-hour format
+  const formatDate = (date) => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true, // Use 12-hour format
+    };
+    return new Date(date).toLocaleString('en-IN', options);
+  };
+
   // Handle deposit submission
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     setErrorMessage('');
-    setSuccessMessage('');
 
     if (!accountNumber) {
       setErrorMessage('No account found. Please sign in.');
@@ -83,13 +95,15 @@ const Deposit = () => {
     // Update balance
     user.balance = (user.balance || 0) + depositAmount;
 
-    // Add transaction to history with ISO date format
-    user.transactions.push({
+    // Add transaction to history with 12-hour formatted date
+    const transaction = {
       type: 'Deposit',
       amount: depositAmount,
-      date: new Date().toISOString(),
+      date: formatDate(new Date()), // Format date in 12-hour format
       balanceAfterTransaction: user.balance,
-    });
+    };
+
+    user.transactions.push(transaction);
 
     // Save updated data to localStorage
     users[userIndex] = user;
@@ -98,10 +112,13 @@ const Deposit = () => {
     // Update state with new balance
     setBalance(user.balance);
 
-    // Show success message
-    setSuccessMessage(
-      `Deposit successful. ₹${depositAmount} added to account ${accountNumber}. Current balance: ₹${user.balance}`
-    );
+    // Show success message using SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: 'Deposit Successful!',
+      text: `₹${depositAmount} has been deposited to your account. Current balance: ₹${user.balance}`,
+      confirmButtonText: 'OK',
+    });
 
     resetForm();
     setSubmitting(false);
@@ -189,7 +206,7 @@ const Deposit = () => {
                       className="form-control mb-3"
                       placeholder="Enter amount to deposit"
                     />
-                    <ErrorMessage name="amount" component="div" className=" error-message text-danger" />
+                    <ErrorMessage name="amount" component="div" className="error-message text-danger" />
                   </div>
 
                   <button type="submit" className="btn btn-primary w-100" disabled={isSubmitting}>
@@ -199,12 +216,31 @@ const Deposit = () => {
               )}
             </Formik>
 
-            {/* Success and Error Messages */}
-            {successMessage && (
-              <div className="alert alert-success mt-3">
-                {successMessage}
-              </div>
-            )}
+            {/* "Want to Withdraw?" Button with Improved Design */}
+            <div className="mt-3 text-center">
+              <button
+                className="btn btn-outline-danger w-100 p-3 fw-bold"
+                onClick={() => navigate('/withdraw')}
+                style={{
+                  fontSize: '1.2rem',
+                  borderRadius: '10px',
+                  border: '2px solid #dc3545',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#dc3545';
+                  e.target.style.color = '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = 'transparent';
+                  e.target.style.color = '#dc3545';
+                }}
+              >
+                Want to Withdraw? Click Here
+              </button>
+            </div>
+
+            {/* Error Message */}
             {errorMessage && (
               <div className="alert alert-danger mt-3">
                 {errorMessage}

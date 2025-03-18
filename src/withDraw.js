@@ -5,6 +5,7 @@ import WithdrawPic from './Images/Atm.png';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import bcrypt from 'bcryptjs';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const Withdraw = () => {
   const navigate = useNavigate();
@@ -34,6 +35,19 @@ const Withdraw = () => {
       .max(50000, 'Withdrawal amount cannot exceed ₹50,000')
       .typeError('Amount must be a number'),
   });
+
+  // Function to format date in 12-hour format
+  const formatDate = (date) => {
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true, // Use 12-hour format
+    };
+    return new Date(date).toLocaleString('en-IN', options);
+  };
 
   // Handle form submission
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -96,11 +110,11 @@ const Withdraw = () => {
     // Update account balance
     user.balance -= withdrawAmount;
 
-    // Save withdrawal transaction with date and time
+    // Save withdrawal transaction with 12-hour formatted date
     const transaction = {
       type: 'Withdraw',
       amount: withdrawAmount,
-      date: new Date().toISOString(),
+      date: formatDate(new Date()), // Format date in 12-hour format
       balanceAfterTransaction: user.balance,
     };
 
@@ -112,6 +126,14 @@ const Withdraw = () => {
 
     // Update state with new balance
     setBalance(user.balance);
+
+    // Show success message using SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: 'Withdrawal Successful!',
+      text: `₹${withdrawAmount} has been withdrawn from your account.`,
+      confirmButtonText: 'OK',
+    });
 
     // Reset form inputs
     resetForm();
