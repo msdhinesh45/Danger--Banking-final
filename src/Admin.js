@@ -25,7 +25,7 @@ const AdminLogin = () => {
                 .min(6, 'Password must be at least 6 characters'),
         }),
         onSubmit: (values) => {
-            if (values.username === 'dhinesh45' && values.password === '@Msdhinesh45') {
+            if (values.username === 'admin45' && values.password === '@M.Sc12345') {
                 // Success message with SweetAlert2
                 Swal.fire({
                     icon: 'success',
