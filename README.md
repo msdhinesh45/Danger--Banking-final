@@ -34,6 +34,16 @@
 
 ---
 
+---
+
+## Admin details
+
+-  Admin username : admin45
+- 🔐 Password :@M.Sc12345
+
+---
+
+
 ## 📌 Note
 
 This project is built for learning purposes only and does not include any real-time backend or database integration.
